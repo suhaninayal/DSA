@@ -1,0 +1,26 @@
+int getLongestSubarray(vector<int>& nums, int k) {
+    // Initialize a variable 'ANS' with 0.
+    int ans = 0;
+
+    int n = nums.size();
+
+    // Run a loop from 'i' = 0... 'N' - 1:
+    for (int i = 0; i < n; i++) {
+        // Initialize a variable 'SUM' with 0.
+        int sum = 0;
+
+        // Again Run a loop from 'j' = 'i'... 'N' -1:
+        for (int j = i; j < n; j++) {
+            // Add the value of 'NUMS[ j ]' in variable 'SUM'.
+            sum += nums[j];
+
+            // If 'SUM' is equal to 'K' then update the value of 'ANS' with
+            // maximum of 'ANS' and ('j' - 'i' +1).
+            if (sum == k) {
+                ans = max(ans, j - i + 1);
+            }
+        }
+    }
+    // Return the value of 'ANS'.
+    return ans;
+}
